@@ -1,0 +1,15 @@
+title: Waveform Theme — Documentation
+description: >-
+  Setup guides, metafield reference, style options, and troubleshooting for the
+  Waveform Shopify theme — instruments, plugins and bundles for audio & software sellers.
+theme: jekyll-theme-cayman
+# jekyll-relative-links (whitelisted on GitHub Pages) rewrites the existing
+# [text](foo.md) cross-links to their rendered URLs so nothing 404s.
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+exclude:
+  - generate_section_docs.py
+  - README.md

@@ -1,0 +1,81 @@
+# Section reference
+
+Every section in Waveform, with all settings and blocks. System sections power fixed templates; everything else can be added to any page via the theme editor.
+
+- [404](main-404.md) — System: the not-found page.
+- [A/B player](ab-player.md) — An A/B (or A/B/C) audio comparison player — shoppers toggle between two or three renders of the same passage while it plays, switching gaplessly.
+- [About — Contact](about-contact.md) — A closing call-to-action for the About page: heading, invitation copy, and a mailto: email link.
+- [About — Founder](about-founder.md) — A founder / team-lead spotlight: bio, name, role, an optional link, and a photo with full crop, focal-point, and zoom controls (falls back to a monogram when no photo is set).
+- [About — Hero](about-hero.md) — Opening hero for the About page: an animated background, a two-line headline (plain line + accent line), a subheadline, and one optional call-to-action button.
+- [About — How we work](about-work.md) — Two side-by-side cards describing the ways customers or partners can work with you, each with its own bullet list.
+- [About — Our story](about-story.md) — The origin-story block — eyebrow, a two-part heading, and a one-or-two-paragraph rich-text body.
+- [About — Stats bar](about-stats.md) — A four-column band of big numbers with labels, for quick credibility on the About page.
+- [About — Technology](about-technology.md) — A three-card row of your core pillars or capabilities under a two-part heading.
+- [About — Vision](about-vision.md) — A large vision statement — eyebrow, a two-part statement (plain + accent gradient), and a short supporting paragraph.
+- [Announcement bar](announcement-bar.md) — A slim bar above the header for promotions, shipping notes, or launches.
+- [Article](main-article.md) — System: blog post layout with reading progress, table of contents, share buttons, and related posts.
+- [Audio player](audio-player.md) — Inline audio demos with seekable waveform bars — play real product audio on any page.
+- [Before / after](before-after.md) — A draggable comparison slider between two images — ideal for dry/wet audio visuals, on/off states, or product transformations.
+- [Blog](main-blog.md) — System: blog index with tag pills and a featured first post.
+- [Blog posts](blog-posts.md) — Shows your latest posts as cards with computed read times.
+- [Bundle contents](bundle-contents.md) — Bundle product page: the included-products grid and the value summary meter showing the total saving.
+- [Bundle grid](bundle-grid.md) — Collection page grid purpose-built for bundles, with three savings display styles (badge, bar, or full price breakdown).
+- [Bundle page](main-bundle.md) — System: bundle product page buy box (hero, includes list, sticky add-to-cart).
+- [Bundles hero](bundles-hero.md) — Hero for the bundles collection with gradient-emphasis heading and stat chips.
+- [Cart](main-cart.md) — System: full cart page with steppers, save-for-later, promo capture, and recommendations.
+- [Cart drawer](cart-drawer.md) — The slide-out cart.
+- [Collection](main-collection.md) — System: collection page with live filters, sort, density toggle, and promo tiles.
+- [Collection cards](collection-list.md) — Cards linking to collections, with image, title, and product count.
+- [Collections list](main-list-collections.md) — System: the all-collections index page.
+- [Compare products](compare-products.md) — Side-by-side product comparison table with type tabs and up to four products, remembered per visitor.
+- [Comparison table](comparison-table.md) — A static feature-comparison table you fill in manually — great for plan tiers or you-vs-competitor matrices.
+- [Contact form](contact-form.md) — A styled contact form posting to Shopify's native contact form (replies go to your store email).
+- [Countdown banner](countdown-banner.md) — Full-width banner with a server-anchored countdown — safe for launches because every visitor sees the same time.
+- [Custom Liquid](custom-liquid.md) — Empty canvas for your own Liquid/HTML — escape hatch for anything the theme doesn't ship.
+- [Downloads hero](downloads-hero.md) — Downloads page hero with OS detection and a featured release with per-OS download buttons.
+- [Downloads list](downloads-list.md) — The product-installers list with OS toggle, search, and per-release changelogs.
+- [Downloads resources](downloads-docs.md) — Downloads page: manuals, system requirements, and a help strip.
+- [FAQ](faq.md) — Accordion FAQ with groups and deep-linkable questions.
+- [Feature grid](feature-grid.md) — An image-and-text feature grid (2–4 columns) with an eyebrow, heading, optional subtext, and a configurable image ratio — your global features at a glance.
+- [Feature story](feature-story.md) — Alternating image-and-text feature blocks — the main storytelling section on product pages.
+- [Featured article](featured-article.md) — Spotlight one blog post with a large cover treatment.
+- [Featured bundle](featured-bundle.md) — A wide promotional strip for one bundle with its savings called out.
+- [Featured collection](featured-collection.md) — A product grid pulled from any collection, with optional view-all link.
+- [Featured product](featured-product.md) — A full buy-box for one product (price, rating, quick add) embedded in any page.
+- [Finder hero](finder-hero.md) — Product finder page hero.
+- [Finder quiz](finder-quiz.md) — The product-finder quiz: four questions whose answers score products by tag matches.
+- [Footer](footer.md) — Site footer: link menus, newsletter signup, locale/currency selectors, payment icons, and an optional custom Liquid block.
+- [Gallery](gallery.md) — Image gallery in mosaic or uniform grid layout.
+- [Header](header.md) — Site header: logo, 3-level mega menu, search, account, cart, and theme toggle.
+- [Hero](hero.md) — The animated homepage hero with gradient-emphasis heading, stat chips, and product cards.
+- [Hero banner](hero-banner.md) — General-purpose hero with background image, heading, text, and buttons.
+- [Image hotspots](hotspots.md) — An image with positioned, clickable hotspots that open product popovers.
+- [Image with text](image-with-text.md) — The workhorse split section: media on one side, heading/text/button on the other.
+- [Key features](key-features.md) — Icon + heading + text feature grid (“Under the hood”).
+- [License panel](license-panel.md) — Support-page panel explaining licensing terms with icon rows.
+- [Logo list](logo-list.md) — A row of partner/press logos.
+- [Map / store info](map.md) — A stylized location section with image and address card.
+- [Marquee strip](marquee.md) — An infinitely scrolling text ticker.
+- [Multicolumn](multicolumn.md) — Simple 2–4 column text/icon layout for value props or how-it-works steps.
+- [Newsletter](newsletter.md) — Standalone email signup section with the same customer-form backend as the footer.
+- [Page](main-page.md) — System: default standard page content.
+- [Password](main-password.md) — System: the password/coming-soon page.
+- [Popup](popup.md) — Site-wide popup (newsletter or promo) with delay/exit triggers and per-visitor snooze.
+- [Predictive search](predictive-search.md) — System: the live search suggestions dropdown.
+- [Product page](main-product.md) — System: the product page buy box — gallery, options, price, quantity, trust rows, sticky add-to-cart, back-in-stock, low-stock, app blocks.
+- [Product reviews](product-reviews.md) — Star-rated customer reviews stored as metaobjects, with a moderated submission form.
+- [Pull quote](pull-quote.md) — An oversized standalone quote with attribution.
+- [Recently viewed](recently-viewed.md) — Shelf of products the visitor recently viewed (stored in their browser).
+- [Recommended products](related-products.md) — Shopify-powered product recommendations for the current product.
+- [Rich text](rich-text.md) — Centered editorial text block for mission statements and announcements.
+- [Search](main-search.md) — System: search results with scope tabs and predictive search.
+- [Slideshow](slideshow.md) — Full-bleed image slideshow with per-slide text and buttons, autoplay optional.
+- [Spacer & divider](spacer.md) — Adjustable vertical whitespace.
+- [Spec cards](specs.md) — System-requirements / spec cards with icon headers and label-value rows.
+- [Stats](stats.md) — A row of big numbers with labels for social proof.
+- [Support hero](support-hero.md) — Support page hero with live-filtering FAQ search.
+- [Testimonials](testimonials.md) — Quote cards with name, affiliation, and optional photo.
+- [Things to know](things-to-know.md) — Product-page accordion for licensing, installation, refunds, and a release changelog.
+- [Topic cards](topic-cards.md) — Support-page topic tiles linking to docs/pages.
+- [USP / trust row](usp-row.md) — Compact icon + text row for shipping/guarantee/support promises.
+- [Video](video.md) — Click-to-play video with poster image — Shopify-hosted, YouTube, or Vimeo.
