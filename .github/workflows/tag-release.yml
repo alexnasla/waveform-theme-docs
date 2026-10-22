@@ -1,0 +1,98 @@
+name: tag-release
+# MANUAL ONLY. Creates a version tag, and by default a GitHub release, on this repo using the
+# workflow's own token. This exists so a tag can be cut without a local git push (a session that
+# can only reach GitHub through its API can still dispatch this workflow).
+#
+# Guard rails, all enforced below:
+#   - the tag must look like vX.Y.Z (optionally with a -prerelease suffix); `tmp-*` is allowed
+#     only so a test tag can be created and removed again;
+#   - an existing tag is NEVER moved or overwritten;
+#   - `delete` removes a `tmp-*` tag only, never a version tag;
+#   - the commit tagged is whatever `ref` resolves to (default: the default branch).
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag to create, e.g. v1.2.3 (tmp-* for a throwaway test tag)."
+        required: true
+      ref:
+        description: "Branch, tag or commit SHA to tag. Empty means the default branch."
+        required: false
+        default: ""
+      title:
+        description: "Release title. Empty means the tag name."
+        required: false
+        default: ""
+      notes:
+        description: "Release notes (Markdown). Empty generates notes from merged PRs."
+        required: false
+        default: ""
+      create_release:
+        description: "Also create a GitHub release for the tag (false = bare tag)."
+        type: boolean
+        default: true
+      prerelease:
+        description: "Mark the release as a pre-release."
+        type: boolean
+        default: false
+      delete:
+        description: "Delete the tag (and its release). Only allowed for tmp-* tags."
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+      TAG: ${{ inputs.tag }}
+      REF: ${{ inputs.ref }}
+      TITLE: ${{ inputs.title }}
+      NOTES: ${{ inputs.notes }}
+      CREATE_RELEASE: ${{ inputs.create_release }}
+      PRERELEASE: ${{ inputs.prerelease }}
+      DELETE: ${{ inputs.delete }}
+    steps:
+      - name: Validate the tag name
+        run: |
+          set -euo pipefail
+          if [[ "$DELETE" == "true" ]]; then
+            [[ "$TAG" =~ ^tmp-[0-9A-Za-z._-]+$ ]] || { echo "::error::delete is only allowed for tmp-* tags"; exit 1; }
+          else
+            [[ "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ || "$TAG" =~ ^tmp-[0-9A-Za-z._-]+$ ]] \
+              || { echo "::error::tag must look like vX.Y.Z (or tmp-*)"; exit 1; }
+          fi
+
+      - name: Delete a tmp-* tag
+        if: ${{ inputs.delete }}
+        run: |
+          set -euo pipefail
+          gh release delete "$TAG" --repo "$REPO" --yes --cleanup-tag 2>/dev/null \
+            || gh api -X DELETE "repos/$REPO/git/refs/tags/$TAG"
+          echo "Deleted $TAG"
+
+      - name: Create the tag and release
+        if: ${{ !inputs.delete }}
+        run: |
+          set -euo pipefail
+          if gh api "repos/$REPO/git/ref/tags/$TAG" >/dev/null 2>&1; then
+            echo "::error::tag $TAG already exists; this workflow never moves a tag"; exit 1
+          fi
+          if [[ -z "$REF" ]]; then
+            REF="$(gh api "repos/$REPO" --jq .default_branch)"
+          fi
+          SHA="$(gh api "repos/$REPO/commits/$REF" --jq .sha)"
+          echo "Tagging $TAG at $SHA ($REF)"
+          if [[ "$CREATE_RELEASE" == "true" ]]; then
+            args=(--repo "$REPO" --target "$SHA" --title "${TITLE:-$TAG}")
+            [[ "$PRERELEASE" == "true" ]] && args+=(--prerelease)
+            if [[ -n "$NOTES" ]]; then args+=(--notes "$NOTES"); else args+=(--generate-notes); fi
+            gh release create "$TAG" "${args[@]}"
+          else
+            gh api "repos/$REPO/git/refs" -f ref="refs/tags/$TAG" -f sha="$SHA"
+          fi
+          echo "Created $TAG at $SHA"
